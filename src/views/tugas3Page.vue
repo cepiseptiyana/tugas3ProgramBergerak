@@ -11,7 +11,7 @@
           <a class="Refresh" href="tabs/tugas3Page">Refresh</a>
         </p>
         <table class="center">
-          <tr v-for="data in dataUsers" :key="data.id">
+          <tr v-for="data in dataUsers">
             <td>
               <p style="font-size: 12px">rank</p>
               <p>{{ data.rank }}</p>
@@ -31,7 +31,7 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script>
 import {
   IonPage,
   IonHeader,
@@ -53,7 +53,7 @@ export default defineComponent({
   mounted() {
     new EndPointAccess("https://api.coinlore.net/api/tickers/")
       .getResponse()
-      .then((response: any) => (this.dataUsers = response.data.data));
+      .then((response) => (this.dataUsers = response.data.data));
   },
   components: {
     IonContent,
